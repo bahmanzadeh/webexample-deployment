@@ -1,0 +1,9 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: webapp2
+  namespace: ns2
+spec:
+  exportTo:
+  - "*"
+  host: webapp2.ns2
