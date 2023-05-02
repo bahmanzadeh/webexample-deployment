@@ -1,7 +1,7 @@
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
-  name: dnsproxy1
+  name: dnsproxy
   namespace: ns1
 spec:
   meshConfig:
@@ -10,4 +10,4 @@ spec:
         # Enable basic DNS proxying
         ISTIO_META_DNS_CAPTURE: "false"
         # Enable automatic address allocation, optional
-        #ISTIO_META_DNS_AUTO_ALLOCATE: "true"
+        ISTIO_META_DNS_AUTO_ALLOCATE: "false"
