@@ -5,7 +5,8 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-  - 192.168.215.100 - 192.168.215.150
+  # IP from the NAT default network on the system
+  - 192.168.231.10 - 192.168.231.50
 ---
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
