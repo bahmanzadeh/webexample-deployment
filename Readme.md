@@ -1,4 +1,5 @@
 You use metallb for external load balancer for Minikube. here is the order for the installation:
+Make sure minikube is installed and then you install metallb:
 
 - (Optional) kubectl config use-context cluster1
 - metallb-setarp.sh --> only first time on the Kubernetes cluster

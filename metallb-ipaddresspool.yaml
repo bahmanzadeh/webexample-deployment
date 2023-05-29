@@ -6,7 +6,7 @@ metadata:
 spec:
   addresses:
   # IP from the NAT default network on the system
-  - 192.168.70.10 - 192.168.70.50
+  - 172.17.60.50 - 172.17.60.100
 ---
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
