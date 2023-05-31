@@ -10,11 +10,13 @@ spec:
  selector:
   matchLabels:
      app: webapp2
+     version: v1
  template:
     metadata:
      name: webapp2
      labels:
        app: webapp2
+       version: v1
     spec:
       containers:
       - name: webapp2
@@ -31,5 +33,6 @@ spec:
   selector:
     app: webapp2
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 8080
+      appProtocol: http
+      targetPort: 8080
