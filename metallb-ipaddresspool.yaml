@@ -6,7 +6,7 @@ metadata:
 spec:
   addresses:
   # For Linux make sure to choose the IP from the NAT default network
-  - 192.168.122.50 - 192.168.122.99 
+  - 192.168.122.21 - 192.168.122.30
 ---
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement

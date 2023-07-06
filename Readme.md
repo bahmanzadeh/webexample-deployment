@@ -9,6 +9,9 @@ Before installing Istio make sure you install Metallb:
 - metallb-ipaddresspool.yaml --> determine what IP pool should be assined to the outside services:
 kubectl apply -f metallb-ipaddresspool.yaml
 
+kubectl run podns1 --context cluster1 --image=rezabah/netutils:1.0 -n ns1 -i --tty -- /bin/bash
+kubectl run podns2 --context cluster2 --image=rezabah/netutils:1.0 -n ns2 -i --tty -- /bin/bash
+
 Enabling nginx ingress controller would be enough to use that for external access and just configure ingress rules for each service using Ingress in Kubernetes. then you don't need a load balancer as ingress controller. If you need a load balancer to act as the ingress controller you need to declare it using ingressclass file and then in the ingress yaml file also make sure to specify the ingressclassname.
 
 nginx uses Nodeport for providing external access. For Ingress controller you have the option to use nginx controller OR External LB like Metallb.
@@ -21,4 +24,5 @@ Run these commands:
 apt update
 apt install curl -y
 curl -I http://webapp2.ns2
+
 
