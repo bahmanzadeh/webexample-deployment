@@ -4,16 +4,16 @@ metadata:
   name: compute-resource-constraint
 spec:
   limits:
-  - default: # this section defines default limits
-      Cpu: 200m
-      memory:1000Mib   
-    defaultRequest: # this section defines default requests
+  - default: # this section defines default limits for the containers without resource definition
+      Cpu: 100m
+      memory: 1000Mi
+    defaultRequest: # this section defines default requests for the containers without resource definition
       cpu: 100m
-      memory:500Mib
-    max: # max and min define the limit range
-      cpu: 300m
-      memory:1000Mib
+      memory: 1000Mi
+    max: # max and min define the max-limit and min-request can be defined for a container
+      cpu: "1"
+      memory: 5000Mi
     min:
-      cpu: 100m
-      memory:200Mib
+      cpu: 20m
+      memory: 100Mi
     type: Container
