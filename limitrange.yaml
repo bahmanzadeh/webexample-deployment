@@ -10,10 +10,10 @@ spec:
     defaultRequest: # this section defines default requests for the containers without resource definition
       cpu: 100m
       memory: 1000Mi
-    max: # max and min define the max-limit and min-request can be defined for a container
+    max: # max-limit can be defined for a container
       cpu: "1"
       memory: 5000Mi
-    min:
+    min: # min-request can be defined for a container
       cpu: 20m
       memory: 100Mi
     type: Container
