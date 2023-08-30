@@ -1,19 +1,19 @@
 apiVersion: v1
 kind: LimitRange
 metadata:
-  name: compute-resource-constraint
+  name: compute-resource-limit
 spec:
   limits:
   - default: # this section defines default limits for the containers without resource definition
-      Cpu: 100m
-      memory: 1000Mi
+      cpu: 100m
+      memory: 2Gi
     defaultRequest: # this section defines default requests for the containers without resource definition
       cpu: 100m
-      memory: 1000Mi
-    max: # max-limit can be defined for a container
-      cpu: "1"
-      memory: 5000Mi
-    min: # min-request can be defined for a container
-      cpu: 20m
-      memory: 100Mi
+      memory: 250Mi
+    # max: # max-limit can be defined for a container
+    #   cpu: 1000m
+    #   memory: 5Gi
+    # min: # min-request can be defined for a container
+    #   cpu: 20m
+    #   memory: 100Mi
     type: Container
