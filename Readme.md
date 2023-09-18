@@ -24,5 +24,16 @@ Run these commands:
 apt update
 apt install curl -y
 curl -I http://webapp2.ns2
+------------------------------------------ Install VPA ------------------------
+https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler
 
+If you have already installed, uninstall it: ./hack/vpa-down.sh
+git checkout vertical-pod-autoscaler-0.14.0
+./hack/vpa-up.sh
 
+kubectl get vpa <vpa-name> -n ns1
+The lower bound is the minimum estimation for the container.
+The upper bound is the maximum recommended resource estimation for the container.
+Target estimation is the one we will use for setting resource requests.
+All of these estimations are capped based on min allowed and max allowed container policies.
+The uncapped target estimation is a target estimation produced if there were no minAllowed and maxAllowed restrictions.
