@@ -12,14 +12,9 @@ spec:
     containerPolicies:
       - containerName: 'istio-proxy'
         mode: "Off"
-      - containerName: '*'
-        minAllowed:
-          cpu: 100m
-          memory: 100Mi
-        maxAllowed:
-          cpu: 2
-          memory: 2Gi
-        controlledResources: ["memory"]  
+      - containerName: '*' # for all containers that don't have individual policies
+        mode: "Auto" 
+        controlledResources: ["memory"] #  Specifies the type of recommendations that will be computed
   updatePolicy:
-    updateMode: "Auto"
-    minReplicas: 1
+    updateMode: "Auto" # auto apply the recommendations
+    minReplicas: 1 # Minimal number of replicas which need to be alive for Updater to attempt Pod eviction
