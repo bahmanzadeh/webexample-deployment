@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: slow
+  selector: # matching between PV and PVC, normally don't need it
+    matchLabels:
+      release: "stable"  # matchLabels - the volume must have a label with this value 
+    matchExpressions:
+      - {key: environment, operator: In, values: [dev]}
+
+# matchExpressions - a list of requirements made by specifying key, list of values, and operator that relates the key and values. Valid operators include In, NotIn, Exists, and DoesNotExist.
+# All of the requirements, from both matchLabels and matchExpressions, are ANDed together – they must all be satisfied in order to match.
+
+      
