@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: webapp1-deployment
+  name: webapp1-statefulset
   namespace: rezapoc1
   labels:
     app: webapp1
@@ -10,6 +10,7 @@ spec:
  selector:
   matchLabels:
      app: webapp1
+ serviceName: "webapp1"   
  template:
     metadata:
      name: webapp1
@@ -28,26 +29,3 @@ spec:
         volumeMounts:
           - mountPath: "/etc/data"
             name: myvol
-        
-        # set Env variables PYTHONUNBUFFERED=1;PYDEVD_USE_CYTHON=NO
-        # stress --cpu 1 --vm 1 --vm-bytes 800M --vm-keep --timeout 1000s
-
-
-  # resources:
-        #   requests:
-        #     cpu: 100m
-        #     memory: "100Mi"
-        #   limits:
-        #     cpu: 200m
-        #     memory: "200Mi"
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: webapp1
-#   namespace: ns1
-# spec:
-#   selector:
-#     app: webapp1
-#   ports:
-#     - port: 80
-#       targetPort: 80
