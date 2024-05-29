@@ -6,7 +6,7 @@ metadata:
 spec:
   hosts:
   - webapp1
-  exportTo:
+  exportTo: 
   - "*"
   http:
   - match:

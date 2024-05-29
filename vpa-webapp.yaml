@@ -1,20 +1,27 @@
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
-  name: vpa-webapp1
+  name: vpa-webapp
   namespace: ns1
 spec:
   targetRef:
     apiVersion: "apps/v1"
     kind: Deployment
-    name: webapp1-deployment
+    name: webapp-deployment
   resourcePolicy:
     containerPolicies:
       - containerName: 'istio-proxy'
         mode: "Off"
       - containerName: '*' # for all containers that don't have individual policies
         mode: "Auto" 
-        controlledResources: ["memory"] #  Specifies the type of recommendations that will be computed
+        controlledResources: ["cpu", "memory"] #  Specifies the type of recommendations that will be computed
+        controlledValues: "RequestsOnly"  # Specifies which resource values should be controlled. The default is RequestsAndLimits
+        minAllowed:
+          cpu: "250m"  
+          memory: "200Mi"
+        maxAllowed:
+          cpu: "2000m"  
+          memory: "2000Mi"
   updatePolicy:
     updateMode: "Auto" # auto apply the recommendations
     minReplicas: 1 # Minimal number of replicas which need to be alive for Updater to attempt Pod eviction

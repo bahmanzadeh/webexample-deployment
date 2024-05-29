@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+    app: webapp
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+     app: webapp
+     version: v1
+ template:
+    metadata:
+     name: webapp
+     labels:
+       app: webapp
+       version: v1
+    spec:
+      containers:
+      - name: webapp
+        image: nginx:1.14.2
+        resources:
+          requests:
+            cpu: 4
+        ports:
+        - containerPort: 80
