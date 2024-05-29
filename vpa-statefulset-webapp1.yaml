@@ -1,0 +1,20 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: vpa-webapp1
+  namespace: rezapoc1
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: StatefulSet
+    name: webapp1-statefulset
+  resourcePolicy:
+    containerPolicies:
+      - containerName: 'istio-proxy'
+        mode: "Off"
+      - containerName: '*' # for all containers that don't have individual policies
+        mode: "Auto" 
+       # controlledResources: ["memory"] #  Specifies the type of recommendations that will be computed. if using HPA then uncomment it
+  updatePolicy:
+    updateMode: "Auto" # auto apply the recommendations
+    minReplicas: 1 # Minimal number of replicas which need to be alive for Updater to attempt Pod eviction
